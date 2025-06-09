@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SF</title>
+  <link rel="stylesheet" href="core.css" />
+  <link rel="stylesheet" href="home.css" />
+</head>
+<body id="pageBody" style="background-color: rgb(0, 0, 0);">
+
+  <!-- =======================================================
+       1) TOP HEADER (only visible on the first “canvas” screen)
+       ======================================================= -->
+  <header class="custom-header top-header" data-header="top">
+    <div class="site-name">SASHA FERREIRA</div>
+    <div class="menu-toggle" id="menuToggle">MENU</div>
+  </header>
+
+  <!-- =======================================================
+       2) CONTEXTUAL OVERLAY MENU (triggered by top header MENU)
+       ======================================================= -->
+  <div class="menu-overlay" id="menuOverlay">
+    <div class="menu-close" id="menuClose">&times;</div>
+    <nav class="menu-links">
+      <a href="#home" style="--delay: 0s;">HOME</a>
+      <a href="#work" style="--delay: 0.1s;">PROJECTS</a>
+      <a href="#contact" style="--delay: 0.2s;">CONTACT</a>
+    </nav>
+  </div>
+
+  <!-- =======================================================
+       3) SCRUB SPACER (creates scroll space for pinned canvas/text)
+       ======================================================= -->
+  <div class="scrub-spacer"></div>
+
+  <!-- =======================================================
+       4) PINNED CANVAS (smaller, centered)
+       ======================================================= -->
+  <div class="canvas-wrapper">
+    <canvas id="scrollCanvas"></canvas>
+  </div>
+
+  <!-- =======================================================
+       5) PINNED TYPED TEXT (scroll-triggered reveal)
+       ======================================================= -->
+  <div class="animated-text-container">
+    <div class="line" id="line1">Digital interfaces</div>
+    <div class="line" id="line2">crafted with a designer’s vision</div>
+    <div class="line" id="line3">and a writer’s touch</div>
+  </div>
+
+  <!-- =======================================================
+       6) PINNED SCROLL-MAGIC BAR (optional flourish)
+       ======================================================= -->
+  <div class="scroll-magic-container">
+    <div class="scroll-magic-bar">
+      <div class="magic-particles"></div>
+    </div>
+  </div>
+
+  <!-- =======================================================
+       7) LOGO SCREEN / PROJECT LIBRARY (appears after scroll)
+       ======================================================= -->
+  <section id="projectLibrary">
+    <div class="logo-container">
+      <!-- Placeholder rows above the tagline/text -->
+      <div class="logo-text">
+        Hey there. I craft words, visuals, and digital presence with clarity and purpose.
+      </div>
+
+      <!-- Your logos (each with data-speed for parallax) -->
+      <img class="logo-item logo-medium" data-speed="0.14" src="logos/WorldShards.svg"   alt="WorldShards" />
+      <img class="logo-item logo-large"  data-speed="0.10" src="logos/Popiplay.svg"       alt="Popiplay" />
+      <img class="logo-item logo-small"  data-speed="0.22" src="logos/SabioTrade.svg"     alt="SabioTrade" />
+      <img class="logo-item logo-large"  data-speed="0.18" src="logos/EcoWise.svg"        alt="EcoWise" />
+      <img class="logo-item logo-large"  data-speed="0.23" src="logos/Simtech.svg"        alt="Simtech" />
+      <img class="logo-item logo-small"  data-speed="0.20" src="logos/Dicebet.svg"        alt="Dicebet" />
+      <img class="logo-item logo-medium" data-speed="0.25" src="logos/ImagineLive.svg"    alt="ImagineLive" />
+      <img class="logo-item logo-small"  data-speed="0.19" src="logos/PCXB.svg"           alt="PCXB" />
+      <img class="logo-item logo-large"  data-speed="0.21" src="logos/MTC_Exolve.svg"     alt="MTC Exolve" />
+      <img class="logo-item logo-small"  data-speed="0.17" src="logos/OroCommerce.svg"   alt="OroCommerce" />
+      <!-- Solana (trigger-logo) -->
+      <img src="logos/Solana.svg" class="logo-item trigger-logo" alt="Solana" />
+      <img class="logo-item logo-small"  data-speed="0.17" src="logos/SprintBet.svg"      alt="SprintBet" />
+      <img src="logos/Unknown.svg" class="logo-item trigger-logo" alt="Unknown"/>
+    </div>
+  </section>
+
+  <!-- =======================================================
+       8) CASE-BLOCK (VisionOS-style “frosted glass” panel)
+       ======================================================= -->
+  <section class="simple-case-block">
+  <!-- 1) Title -->
+  <h2 class="simple-case-title">SOLANA × GOTBIT</h2>
+
+  <!-- 2) Subtitle -->
+  <h3 class="simple-case-subtitle">
+    Strategic Campaign for Web3 Growth
+  </h3>
+
+  <!-- 3) Description -->
+  <p class="simple-case-description">
+    Crafting and executing a high-impact Twitter thread that highlights the
+    profitability and long-term potential of Solana-based projects in
+    partnership with Gotbit Hedge Fund.
+  </p>
+  <button type="button" class="simple-case-button">
+  Learn more
+  </button>
+  <!-- 4) Hero Image (full‐width under the text) -->
+  <div class="simple-case-image-wrapper">
+    <img
+      src="images/Solana.webp"
+      alt="Solana Campaign Hero"
+      class="simple-case-image"
+    />
+  </div>
+</section>
+<div class="case-divider"></div>
+
+<section class="simple-case-block">
+    <h2 class="simple-case-title">OROCOMMERCE</h2>
+    <h3 class="simple-case-subtitle">B2B  PLATFORM LOCALIZATION</h3>
+    <p class="simple-case-description">
+      Localized an enterprise-level eCommerce migration guide tailored for Russian-speaking B2B audiences 
+      across the Eastern European market.
+    </p>
+    <a href="#" class="simple-case-button">Learn more</a>
+    <div class="simple-case-image-wrapper">
+      <img src="images/Orocommerce.jpg" alt="OroCommerce" class="simple-case-image" />
+    </div>
+  </section>
+  <div class="case-divider"></div>
+
+  <section class="simple-case-block">
+    <h2 class="simple-case-title">WORLDSHARDS</h2>
+    <h3 class="simple-case-subtitle">STRATEGIC CONTENT CAMPAIGN</h3>
+    <p class="simple-case-description">
+      Full-cycle content campaign development and execution for Discord, supporting the launch of a new 
+      in-game economy and three artifact sale phases in the Web3 MMO sandbox WorldShards.
+    </p>
+    <a href="#" class="simple-case-button">Learn more</a>
+    <div class="simple-case-image-wrapper">
+      <img src="images/Worldshard_Image.webp" alt="WorldShards" class="simple-case-image" />
+    </div>
+  </section>
+  <div class="case-divider"></div>
+
+  <div class="sm-cases‐outer">
+  <div class="sm-cases-wrapper">
+
+  <!-- --------------------------
+       PROJECT: SabioTrade
+       (Text on top, image below)
+       -------------------------- -->
+  <div class="sm-case-block">
+    <!-- 1a) Text section -->
+     <div class="sm-case-top">
+    <div class="sm-case-text">
+      <h2 class="sm-case-title">SabioTrade</h2>
+      <h3 class="sm-case-subtitle">Research-Driven Content Strategy</h3>
+      <p class="sm-case-description">
+        Craft a comprehensive long-form article exploring the landscape of funded trader 
+        programs, aimed at equipping traders with actionable insights and driving organic 
+        traffic through an SEO-optimized structure.
+      </p>
+      <a href="#" class="simple-case-button">Learn more</a>
+    </div>
+    </div>
+
+    <!-- 1b) Image section -->
+    <div class="sm-case-image-left">
+      <img
+        src="images/SabioTrade_new.svg"
+        alt="SabioTrade Hero"
+        class="sm-case-image"
+      />
+    </div>
+  </div>
+  <!-- /.sm-case-block (SabioTrade) -->  
+
+
+  <!-- --------------------------
+       PROJECT: MTC Exolve
+       (Image on top, text below)
+       -------------------------- -->
+  <div class="sm-case-block">
+    <!-- 2a) Image section first -->
+      <div class="sm-case-image-right">
+        <img
+          src="images/MTCExolve_new.svg"
+          alt="MTC Exolve Hero"
+          class="sm-case-image"
+        />
+      </div>
+
+    <!-- 2b) Text section below -->
+    <div class="sm-case-text">
+      <h2 class="sm-case-title">MTC Exolve</h2>
+      <h3 class="sm-case-subtitle">Content Article for SMS Marketing</h3>
+      <p class="sm-case-description">
+        Write a value-focused editorial for MTC Exolve on crafting effective SMS copy 
+        and selecting top tools for bulk messaging to enhance B2C communication.
+      </p>
+      <a href="#" class="simple-case-button">Learn more</a>
+    </div>
+  </div>
+  <!-- /.sm-case-block (MTC Exolve) -->  
+</div>
+</div>
+<div class="underlay-wrapper">
+  <img
+    src="images/mockupnew .webp"
+    alt="Underlay"
+    class="underlay-image"
+  />
+  <div class="mockup-textblock">
+
+  <ul class="mockup-metrics">
+    <li>150 000+ Words Generated</li>
+    <li>50+ Articles written</li>
+    <li>4 Languages: RU, EN, UA, JP</li>
+  </ul>
+</div>
+</div>
+
+
+<div class="sm-cases-lower">
+  <div class="sm-cases-wrapper">
+    <!-- EcoWise card -->
+    <div class="sm-case-block">
+      <div class="sm-case-top">
+        <div class="sm-case-image-left-second">
+        <img src="images/Ecowise.jpeg" alt="EcoWise Hero" class="sm-case-image" />
+      </div>
+        <h2 class="sm-case-title">EcoWise</h2>
+        <h3 class="sm-case-subtitle">Engagement-Oriented Promo Copy</h3>
+        <p class="sm-case-description">
+          The article follows the AIDA model to address audience pain points, educate on creatine benefits, 
+          and motivate action through subscription incentives and a wellness gift.
+        </p>
+        <a href="#" class="simple-case-button">Learn more</a>
+      </div>
+    </div>
+
+    <!-- DiceBet card -->
+    <div class="sm-case-block">
+      <div class="sm-case-top">
+      
+        <h2 class="sm-case-title">DiceBet</h2>
+        <h3 class="sm-case-subtitle">Content & Communication Strategy</h3>
+        <p class="sm-case-description">
+          Establish and grow DiceBet’s Telegram presence from scratch. Build a full-scale content system in RU/EN 
+          with slot reviews, promos, and engagement formats. Develop a modular FAQ to streamline support and boost retention.
+        </p>
+        <a href="#" class="simple-case-button">Learn more</a>
+         <div class="sm-case-image-right-second">
+        <img src="images/Dicebet_Image.png" alt="DiceBet Hero" class="sm-case-image" />
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <canvas id="bgParticles"></canvas>
+  <script src="bgParticles.js"></script>
+  <script src="core.js"></script>
+  <script src="home.js"></script>
+<div id="bottomNav">
+    <div class="nav-button nav-sf" title="Sasha Ferreira">SF</div>
+    <div class="nav-menu">
+      <a href="#home">Home</a>
+      <a href="#projects">Projects</a><!-- “Projects” anchors back to the logo section -->
+      <a href="#contact">Contact</a><!-- you can define #contact somewhere below -->
+    </div>
+    <div class="nav-button nav-up" title="Back to Top">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 19V6M5 13l7-7 7 7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+</body>
+</html>
