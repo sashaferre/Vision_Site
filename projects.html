@@ -11,61 +11,223 @@
 <body>
 
   <!-- ─── TOP HEADER & OVERLAY ───────────────────────────────────────── -->
-  <header class="custom-header top-header" data-header="top">
+   <header class="custom-header top-header" data-header="top">
     <div class="site-name">SASHA FERREIRA</div>
-    <button class="menu-toggle" id="menuToggle">MENU</button>
+    <div class="menu-toggle" id="menuToggle">MENU</div>
   </header>
   <div class="menu-overlay" id="menuOverlay">
-    <button class="menu-close" id="menuClose">&times;</button>
+    <div class="menu-close" id="menuClose">&times;</div>
     <nav class="menu-links">
-      <a href="index.html"   style="--delay:0s">HOME</a>
-      <a href="projects.html" style="--delay:0.1s" class="active">PROJECTS</a>
-      <a href="contact.html" style="--delay:0.2s">CONTACT</a>
+      <a href="#home" style="--delay: 0s;">HOME</a>
+      <a href="#work" style="--delay: 0.1s;">PROJECTS</a>
+      <a href="#contact" style="--delay: 0.2s;">CONTACT</a>
     </nav>
   </div>
 
-  <!-- ─── MAIN CONTENT ────────────────────────────────────────────────── -->
-  <main id="projects-page">
+  
 
-   <section class="projects-list">
-    <div class="project-item" data-variant="1">
-    <img src="/images/Solana.webp" alt="Solana × Gotbit" />
-    <h3 class="project-name">SOLANA × GOTBIT</h3>
-    <p class="project-tagline">Strategic Campaign for Web3 Growth</p>
-      <p class="project-desc">
-        Crafting and executing a high-impact Twitter thread that highlights the profitability and long-term potential of Solana-based projects in partnership with Gotbit Hedge Fund.
-      </p>
-      <a class="button" href="#">Learn more</a>
+    <section id="projects-grid" class="projects">
+    <!-- repeat this block for each of your 14 projects -->
+    <div class="project-item">
+      <img src="/images/solanaprojects.jpg" alt="Solana × Gotbit" />
+      <h3 class="project-title glitch-line">
+        <span style="--char-index: 0">S</span><span style="--char-index: 1">o</span><span style="--char-index: 2">l</span><span style="--char-index: 3">a</span><span style="--char-index: 4">n</span><span style="--char-index: 5">a</span><span style="--char-index: 6"> </span><span style="--char-index: 7">×</span><span style="--char-index: 8"> </span><span style="--char-index: 9">G</span><span style="--char-index: 10">o</span><span style="--char-index: 11">t</span><span style="--char-index: 12">b</span><span style="--char-index: 13">i</span><span style="--char-index: 14">t</span>
+      </h3>
+      <div class="overlay">
+        <div class="info">
+          <div class="project-desc">
+            Strategic Campaign FOR Web3 Growth
+          </div>
+          <button class="simple-case-button">Learn more</button>
+        </div>
+      </div>
     </div>
-  </div>
-
-   <div class="project-item" data-variant="2">
-    <img src="/images/orocommerce.jpg" alt="Orocommerce" />
-    <h3 class="project-name">Orocommerce</h3>
-    <p class="project-tagline">B2B Platform Localization</p>
-      <p class="project-desc">
-       Localized an enterprise-level eCommerce migration guide tailored for Russian-speaking B2B audiences across the Eastern European market.
-      </p>
-      <a class="button" href="#">Learn more</a>
+      <div class="project-item">
+      <img src="/images/rchbprojects.png" alt="R-Style Softlab" />
+      <h3 class="project-title glitch-line">
+        <span style="--char-index: 0">R</span><span style="--char-index: 1">-</span><span style="--char-index: 2">S</span><span style="--char-index: 3">t</span><span style="--char-index: 4">y</span><span style="--char-index: 5">l</span><span style="--char-index: 6">e</span><span style="--char-index: 7"> </span><span style="--char-index: 8">S</span><span style="--char-index: 9">o</span><span style="--char-index: 10">f</span><span style="--char-index: 11">t</span><span style="--char-index: 12">l</span><span style="--char-index: 13">a</span><span style="--char-index: 14">b</span>
+      </h3>
+      <div class="overlay">
+        <div class="info">
+          <div class="project-desc">
+            Strategic content partnership on HR and digital transformation
+          </div>
+           <a href="#" class="simple-case-button">Learn more</a>
+        </div>
+      </div>
     </div>
-  </div>
-     <div class="project-item" data-variant="3">
-    <img src="/images/Rstyle.webp" alt="Rstyle" />
-    <h3 class="project-name">R-Style Softlab</h3>
-    <p class="project-tagline">Strategic content partnership on HR and digital transformation</p>
-      <p class="project-desc">
-      Developed a series of long-form expert articles on creativity in tech, emotional intelligence, and key innovations in digital banking, blending research, practical insights, and industry trends.
-      </p>
-      <a class="button" href="#">Learn more</a>
+
+    <div class="project-item">
+      <img src="/images/orocommerceprojects.png" alt="OROCOMMERCE" />
+      <h3 class="project-title glitch-line">
+        <span style="--char-index: 0">O</span><span style="--char-index: 1">R</span><span style="--char-index: 2">O</span><span style="--char-index: 3">C</span><span style="--char-index: 4">O</span><span style="--char-index: 5">M</span><span style="--char-index: 6">M</span><span style="--char-index: 7">E</span><span style="--char-index: 8">R</span><span style="--char-index: 9">C</span><span style="--char-index: 10">E</span>
+      </h3>
+      <div class="overlay">
+        <div class="info">
+          <div class="project-desc">
+            B2B PLATFORM LOCALIZATION
+          </div>
+          <a href="#" class="simple-case-button">Learn more</a>
+        </div>
+      </div>
     </div>
-  </div>
+    <div class="project-item">
+      <img src="/images/worldshardsprojects.png" alt="WORLDSHARDS" />
+      <h3 class="project-title glitch-line">
+        <span style="--char-index: 0">W</span><span style="--char-index: 1">O</span><span style="--char-index: 2">R</span><span style="--char-index: 3">L</span><span style="--char-index: 4">D</span><span style="--char-index: 5">S</span><span style="--char-index: 6">H</span><span style="--char-index: 7">A</span><span style="--char-index: 8">R</span><span style="--char-index: 9">D</span><span style="--char-index: 10">S</span>
+      </h3>
+      <div class="overlay">
+        <div class="info">
+          <div class="project-desc">
+            STRATEGIC CONTENT CAMPAIGN
+          </div>
+          <a href="#" class="simple-case-button">Learn more</a>
+        </div>
+      </div>
+    </div>
+    <div class="project-item">
+      <img src="/images/sabiotradeprojects.png" alt="SabioTrade" />
+      <h3 class="project-title glitch-line">
+        <span style="--char-index: 0">S</span><span style="--char-index: 1">a</span><span style="--char-index: 2">b</span><span style="--char-index: 3">i</span><span style="--char-index: 4">o</span><span style="--char-index: 5">T</span><span style="--char-index: 6">r</span><span style="--char-index: 7">a</span><span style="--char-index: 8">d</span><span style="--char-index: 9">e</span>
+      </h3>
+      <div class="overlay">
+        <div class="info">
+          <div class="project-desc">
+            Research-driven content strategy
+          </div>
+          <a href="#" class="simple-case-button">Learn more</a>
+        </div>
+      </div>
+    </div>
+    <div class="project-item">
+      <img src="/images/mtcexolveprojects.png" alt="MTC EXOLVE" />
+      <h3 class="project-title glitch-line">
+        <span style="--char-index: 0">M</span><span style="--char-index: 1">T</span><span style="--char-index: 2">C</span><span style="--char-index: 3"> </span><span style="--char-index: 4">E</span><span style="--char-index: 5">X</span><span style="--char-index: 6">O</span><span style="--char-index: 7">L</span><span style="--char-index: 8">V</span><span style="--char-index: 9">E</span>
+      </h3>
+      <div class="overlay">
+        <div class="info">
+          <div class="project-desc">
+            Content Series on Cloud Telephony &amp; SMS Marketing
+          </div>
+          <a href="#" class="simple-case-button">Learn more</a>
+        </div>
+      </div>
+    </div>
+    <div class="project-item">
+      <img src="/images/ecowiseprojects.png" alt="ECOWISE" />
+      <h3 class="project-title glitch-line">
+        <span style="--char-index: 0">E</span><span style="--char-index: 1">C</span><span style="--char-index: 2">O</span><span style="--char-index: 3">W</span><span style="--char-index: 4">I</span><span style="--char-index: 5">S</span><span style="--char-index: 6">E</span>
+      </h3>
+      <div class="overlay">
+        <div class="info">
+          <div class="project-desc">
+            Engagement-Oriented Promo Copy
+          </div>
+          <a href="#" class="simple-case-button">Learn more</a>
+        </div>
+      </div>
+    </div>
+    <div class="project-item">
+      <img src="/images/dicebetprojects.png" alt="DICEBET" />
+      <h3 class="project-title glitch-line">
+        <span style="--char-index: 0">D</span><span style="--char-index: 1">I</span><span style="--char-index: 2">C</span><span style="--char-index: 3">E</span><span style="--char-index: 4">B</span><span style="--char-index: 5">E</span><span style="--char-index: 6">T</span>
+      </h3>
+      <div class="overlay">
+        <div class="info">
+          <div class="project-desc">
+            Bilingual Telegram Growth &amp; Support Ecosystem
+          </div>
+          <a href="#" class="simple-case-button">Learn more</a>
+        </div>
+      </div>
+    </div>
+    <div class="project-item">
+      <img src="/images/softgamingsprojects.png" alt="SOFTGAMINGS" />
+      <h3 class="project-title glitch-line">
+        <span style="--char-index: 0">S</span><span style="--char-index: 1">O</span><span style="--char-index: 2">F</span><span style="--char-index: 3">T</span><span style="--char-index: 4">G</span><span style="--char-index: 5">A</span><span style="--char-index: 6">M</span><span style="--char-index: 7">I</span><span style="--char-index: 8">N</span><span style="--char-index: 9">G</span><span style="--char-index: 10">S</span>
+      </h3>
+      <div class="overlay">
+        <div class="info">
+          <div class="project-desc">
+            Strategic Content
+          </div>
+          <a href="#" class="simple-case-button">Learn more</a>
+        </div>
+      </div>
+    </div>
+    <div class="project-item">
+      <img src="/images/warspearprojects.png" alt="WARSPEAR (AIGRIND)" />
+      <h3 class="project-title glitch-line">
+        <span style="--char-index: 0">W</span><span style="--char-index: 1">A</span><span style="--char-index: 2">R</span><span style="--char-index: 3">S</span><span style="--char-index: 4">P</span><span style="--char-index: 5">E</span><span style="--char-index: 6">A</span><span style="--char-index: 7">R</span><span style="--char-index: 8"> </span><span style="--char-index: 9">(</span><span style="--char-index: 10">A</span><span style="--char-index: 11">I</span><span style="--char-index: 12">G</span><span style="--char-index: 13">R</span><span style="--char-index: 14">I</span><span style="--char-index: 15">N</span><span style="--char-index: 16">D</span><span style="--char-index: 17">)</span>
+      </h3>
+      <div class="overlay">
+        <div class="info">
+          <div class="project-desc">
+            Community content
+          </div>
+          <a href="#" class="simple-case-button">Learn more</a>
+        </div>
+      </div>
+    </div>
+    <div class="project-item">
+      <img src="/images/simtechprojects.png" alt="SIMTECH" />
+      <h3 class="project-title glitch-line">
+        <span style="--char-index: 0">S</span><span style="--char-index: 1">I</span><span style="--char-index: 2">M</span><span style="--char-index: 3">T</span><span style="--char-index: 4">E</span><span style="--char-index: 5">C</span><span style="--char-index: 6">H</span>
+      </h3>
+      <div class="overlay">
+        <div class="info">
+          <div class="project-desc">
+            Twitter (X) Thought-Leadership Series
+          </div>
+          <a href="#" class="simple-case-button">Learn more</a>
+        </div>
+      </div>
+    </div>
+    <div class="project-item">
+      <img src="/images/popiplayprojects.png" alt="POPIPLAY" />
+      <h3 class="project-title glitch-line">
+        <span style="--char-index: 0">P</span><span style="--char-index: 1">O</span><span style="--char-index: 2">P</span><span style="--char-index: 3">I</span><span style="--char-index: 4">P</span><span style="--char-index: 5">L</span><span style="--char-index: 6">A</span><span style="--char-index: 7">Y</span>
+      </h3>
+      <div class="overlay">
+        <div class="info">
+          <div class="project-desc">
+            Provider Brand Hub &amp; Launch Content
+          </div>
+          <a href="#" class="simple-case-button">Learn more</a>
+        </div>
+      </div>
+    </div>
+    <div class="project-item">
+      <img src="/images/imagineliveprojects.png" alt="IMAGiNE LIVE" />
+      <h3 class="project-title glitch-line">
+        <span style="--char-index: 0">I</span><span style="--char-index: 1">M</span><span style="--char-index: 2">A</span><span style="--char-index: 3">G</span><span style="--char-index: 4">i</span><span style="--char-index: 5">N</span><span style="--char-index: 6">E</span><span style="--char-index: 7"> </span><span style="--char-index: 8">L</span><span style="--char-index: 9">I</span><span style="--char-index: 10">V</span><span style="--char-index: 11">E</span>
+      </h3>
+      <div class="overlay">
+        <div class="info">
+          <div class="project-desc">
+            Provider Brand Hub &amp; Launch Content
+          </div>
+          <a href="#" class="simple-case-button">Learn more</a>
+        </div>
+      </div>
+    </div>
+    <div class="project-item">
+      <img src="/images/sprintbetprojects.png" alt="SPRINTBET" />
+      <h3 class="project-title glitch-line">
+        <span style="--char-index: 0">S</span><span style="--char-index: 1">P</span><span style="--char-index: 2">R</span><span style="--char-index: 3">I</span><span style="--char-index: 4">N</span><span style="--char-index: 5">T</span><span style="--char-index: 6">B</span><span style="--char-index: 7">E</span><span style="--char-index: 8">T</span>
+      </h3>
+      <div class="overlay">
+        <div class="info">
+          <div class="project-desc">
+            Telegram Casino Launch &amp; Promo Engine
+          </div>
+          <a href="#" class="simple-case-button">Learn more</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-
-     
-
-    </section>
-
-  </main>
+  
 
   <!-- ─── BOTTOM NAV ──────────────────────────────────────────────────── -->
   <div id="bottomNav">

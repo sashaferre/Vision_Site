@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
    /* ===========================================================================
      4) PRELOAD CANVAS FRAMES (SCROLL‐TRIGGERED)
      =========================================================================== */
-  const totalFrames = 264;
+  const totalFrames = 160;
   const frameImages = new Array(totalFrames);
   let loadedCount   = 0;
 
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
   for (let i = 1; i <= totalFrames; i++) {
     const img = new Image();
     const num = String(i).padStart(3, "0");
-    img.src = `frames/frame_${num}.png`;
+    img.src = `frames/frame_${num}.jpg`;
     img.onload = () => {
       loadedCount++;
       if (loadedCount === totalFrames) {
@@ -55,10 +55,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
     img.onerror = () => {
-      console.warn(`⚠️ Could not load frames/frame_${num}.png`);
+      console.warn(`⚠️ Could not load frames/frame_${num}.jpg`);
       loadedCount++;
       if (loadedCount === totalFrames) {
-        computeScrollThresholds();
+        computeScrollThresholds();s
         window.addEventListener("scroll", onScrollDraw);
       }
     };

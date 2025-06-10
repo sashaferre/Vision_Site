@@ -14,7 +14,7 @@
   /* Static background: a dark gray similar to #3A3A3C in your screenshot */
   background-color: #292929;
   color: #FFFFFF;                   /* white text */
-  font-family: var(--font-avenirLight);   /* or whatever font you’re using */
+  font-family: "AvenirLight", sans-serif;   /* or whatever font you’re using */
   font-size: 1rem;                  /* adjust if needed */
   font-weight: 400;
   text-decoration: none;            /* remove underline */
@@ -67,8 +67,8 @@ html, body {
 @font-face {
   font-family: "Dune_Rise";
   src:
-    url("../fonts/Dune_Rise.ttf")   format("truetype"),
-    url("../fonts/Dune_Rise.otf")   format("opentype"),;
+    url("../fonts/Dune_Rise.ttf") format("truetype"),
+    url("../fonts/Dune_Rise.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
