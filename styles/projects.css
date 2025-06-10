@@ -1,0 +1,150 @@
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+  padding: 2rem;
+}
+
+.project-item {
+  position: relative;
+  height: 350px;        
+  overflow: visible;
+  max-width: 100%;
+}
+
+.project-item .project-tagline {
+  color: white;
+  font-family: 'AvenirLight', sans-serif;  
+  font-size: 1.5rem;                  
+  font-weight: 400;
+}
+
+.project-item .project-desc {
+  color: white;
+  font-family: 'AvenirLight', sans-serif; 
+  font-size: 1rem;                  
+  font-weight: 400;
+}
+.project-item .project-name {
+  color: white;
+  font-family: 'Dune_Rise', sans-serif;  
+  font-size: 2rem;            
+  font-weight: 400;
+}
+.project-item img {
+  position: absolute;
+  width: 50%;              
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.project-item .project-name,
+.project-item .project-tagline,
+.project-item .project-desc,
+.project-item .button {
+  position: absolute;
+}
+
+.project-item .button {
+  display: inline-block;
+  background-color: #292929;
+  color: #FFFFFF;              
+  font-family: var(--font-avenirLight);  
+  font-size: 1rem;        
+  font-weight: 400;
+  text-decoration: none;          
+  border-radius: 999px;          
+  text-align: center;
+  padding: 10px 20px;
+  margin: 0 auto 2rem;
+  transition:
+    background-color 0.2s ease,   
+    box-shadow 0.2s ease;         
+}
+.button:hover {
+  background-color: #454545;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+}
+.button:active {
+  background-color: #4C4C4E;        /* a slightly darker/pressed shade */
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  transform: translateY(1px);       /* tiny “press” effect */
+}
+
+.project-item[data-variant="1"] img {
+  top: 45%;
+  left: 5%;
+}
+.project-item[data-variant="1"] .project-name {
+  top: 25%;
+  left: 3%;
+}
+.project-item[data-variant="1"] .project-tagline {
+  top: 30%;
+  left: 70%;
+  text-align: right;
+}
+.project-item[data-variant="1"] .project-desc {
+  top: 80%;
+  left: 56.5%;
+  text-align: right;
+  width: 37rem;
+}
+.project-item[data-variant="1"] .button {
+  top: 110%;
+  left: 45%;
+}
+
+
+.project-item[data-variant="2"] img {
+  top: 30%;
+  left: 50%;
+}
+.project-item[data-variant="2"] .project-name {
+  top: 10%;
+  left: 70%;
+}
+.project-item[data-variant="2"] .project-tagline {
+  top: 30%;
+  left: 3%;
+}
+.project-item[data-variant="2"] .project-desc {
+  top: 100%;
+  left: 3%;
+  width: 25%;
+  width: 39rem;
+}
+.project-item[data-variant="2"] .button {
+  top: 120%;
+  left: 45%;
+}
+
+/* Variant 3: image full-width under text, text staggered top-center */
+.project-item[data-variant="3"] img {
+  top: 30%;
+  left: 30%;
+  width: 40%;
+}
+.project-item[data-variant="3"] .project-name {
+  top: 15%;
+  left: 68%;
+  width: 100%;
+}
+.project-item[data-variant="3"] .project-tagline {
+  top: 30%;
+  left: 0%;
+  width: 30%;
+}
+.project-item[data-variant="3"] .project-desc {
+  top: 110%;
+  left: 60%;
+  width: 40%;
+  text-align: right;
+}
+.project-item[data-variant="3"] .button {
+  top: 140%;
+  left: 45%;
+}
+
+/* …and so on up to [data-variant="14"] … */

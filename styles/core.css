@@ -1,0 +1,338 @@
+#ifBgParticles,
+#bgParticles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* Always fill the viewport */
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;               /* sit it behind everything else */
+  background-color: #000;    /* pure black base */
+}
+.simple-case-button {
+  display: inline-block;
+  /* Static background: a dark gray similar to #3A3A3C in your screenshot */
+  background-color: #292929;
+  color: #FFFFFF;                   /* white text */
+  font-family: var(--font-avenirLight);   /* or whatever font you’re using */
+  font-size: 1rem;                  /* adjust if needed */
+  font-weight: 400;
+  text-decoration: none;            /* remove underline */
+  padding: 10px 20px;               /* vertical + horizontal padding */
+  border-radius: 999px;             /* fully pill-shaped */
+  text-align: center;
+  margin: 0 auto 2rem;
+  transition:
+    background-color 0.2s ease,    /* smooth fade between static/hover */
+    box-shadow 0.2s ease;           /* for hover glow */
+}
+
+/* Hover state: lighter gray (#5A5A5C) and subtle glow */
+.simple-case-button:hover {
+  background-color: #454545;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+}
+
+/* Optional: Active state (mouse-down) */
+.simple-case-button:active {
+  background-color: #4C4C4E;        /* a slightly darker/pressed shade */
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  transform: translateY(1px);       /* tiny “press” effect */
+}
+
+
+/* =========================================================================
+   1) GLOBAL RESET / FONTS / BASE
+   ========================================================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  box-shadow: none !important;
+  outline: none !important;
+  border: none !important;
+}
+html, body {
+  background-color: #000;
+  color: #fff;
+  overflow-x: hidden;       /* prevent horizontal scroll */
+  font-family: 'Methanerse', sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* ——————————————————————————————————————————————————————————
+   FONT‐FACE DECLARATIONS
+   —————————————————————————————————————————————————————————— */
+@font-face {
+  font-family: "Dune_Rise";
+  src:
+    url("../fonts/Dune_Rise.ttf")   format("truetype"),
+    url("../fonts/Dune_Rise.otf")   format("opentype"),;
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face{
+  font-family: "AvenirLight";
+  src: url("../fonts/AvenirLight.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* =========================================================================
+   2) TOP HEADER + OVERLAY MENU
+   ========================================================================= */
+.custom-header {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+  align-items: center;
+  z-index: 100;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-family: 'Dune_Rise', sans-serif;
+}
+.custom-header.hide {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-20px);
+}
+
+.custom-header .site-name {
+  font-size: 22px;
+  font-weight: 500;
+  color: #fff;
+  text-transform: uppercase;
+}
+.menu-toggle {
+  font-size: 22px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #fff;
+}
+
+/* Overlay */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding-right: 80px;
+  z-index: 200;
+  background: rgba(255, 255, 255, 0.015);
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.01);
+  color: #fff;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  font-family: Dune_Rise, sans-serif;
+}
+.menu-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu-close {
+  position: absolute;
+  top: 40px;
+  right: 60px;
+  font-size: 36px;
+  cursor: pointer;
+  color: #fff;
+  text-shadow:
+    0 0 4px rgba(255, 255, 255, 0.5),
+    0 0 12px rgba(255, 255, 255, 0.3);
+}
+.menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: flex-end;
+}
+@keyframes fadeSlideIn {
+  to { opacity: 1; transform: translateX(0); }
+}
+.menu-links a {
+  font-size: 48px;
+  color: #fff;
+  text-shadow:
+    0 0 2px rgba(255, 255, 255, 0.6),
+    0 0 8px rgba(255, 255, 255, 0.2);
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateX(40px);
+  animation: fadeSlideIn 0.5s ease-out forwards;
+  animation-delay: var(--delay, 0s);
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+.menu-links a:hover {
+  transform: translateX(6px);
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.9),
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 40px rgba(255, 255, 255, 0.4);
+}
+.menu-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.06),
+    transparent 60%
+  );
+  animation: shimmer 5s infinite alternate ease-in-out;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 20px;
+}
+.menu-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.03),
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+#bottomNav {
+  position: fixed;
+  bottom: 24px;                   /* float a bit above the bottom edge */
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  display: flex;
+  align-items: center;
+  gap: 16px;                      /* space between circles */
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* (B) Once body has .show-bottom-nav, fade in & slide up */
+body.show-bottom-nav #bottomNav {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* (C) Common styling for each small “circle” */
+.nav-button {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.30);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: "AvenirLight", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.nav-button:hover {
+  background: rgba(29, 29, 29, 0.25);
+  transform: translateY(-2px);
+}
+.nav-menu a.active {
+  /* gentle frosted-glass pill */
+  background: linear-gradient(
+    to bottom,
+    rgba(60, 60, 60, 0.32) 0%,
+    rgba(45, 45, 45, 0.24) 100%
+  );
+  backdrop-filter: blur(18px) saturate(220%);
+  -webkit-backdrop-filter: blur(18px) saturate(220%);
+  border: 1px solid rgba(255,255,255,0.50);
+  padding: 0.7rem 0.7rem;  /* shrink the inner active capsule */
+  border-radius: 60px; 
+  color: #fff;
+  position: relative;
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+  
+  /* soft inner shadow for depth */
+  box-shadow:
+    inset 0 0 6px rgba(0,0,0,0.2),
+    0 0 2px rgba(255,255,255,0.4);
+}
+
+/* (D) Special styling for the “middle” nav‐menu capsule */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-left: 5px;          
+  padding-top: 12px;
+  padding-right: 24px;
+  padding-bottom: 12px;     /* enough room to fit three links */
+  border-radius: 24px;           /* pill shape */
+  height: 48px;                  /* same as circle height */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.30);
+}
+.nav-menu a {
+  color: #fff;
+  font-family: "AvenirLight", sans-serif;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: text-shadow 0.2s ease;
+}
+.nav-menu a.active:hover {
+  background: linear-gradient(
+    to bottom,
+    rgba(60, 60, 60, 0.4) 0%,
+    rgba(45, 45, 45, 0.3) 100%
+  );
+  box-shadow:
+    inset 0 0 6px rgba(0,0,0,0.2),
+    0 0 8px rgba(255,255,255,0.6),
+    0 0 2px rgba(255,255,255,0.4);
+}
+
+
+/* (E) Small‐screen tweaks */
+@media (max-width: 480px) {
+  .nav-menu a.active {
+    border-radius: 14px;
+    padding: 0.2rem 0.6rem;
+  }
+  .nav-menu {
+    gap: 8px;
+    padding: 0 12px;
+    border-radius: 20px;
+    height: 40px;
+  }
+  .nav-menu a {
+    font-size: 0.8rem;
+  }
+}
+.case-divider {
+  width: 100%;
+  max-width: 1100px; /* match this to the max-width you used for .simple-case-block */
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.2); /* very thin, semi-transparent white */
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  margin-left: auto;
+  margin-right: auto;
+}
