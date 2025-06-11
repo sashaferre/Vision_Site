@@ -79,7 +79,7 @@
   opacity: 0;
   display: inline-block;
   animation: typingLetter 0.05s forwards;
-  animation-delay: calc(var(--char-index) * 0.05s);
+  animation-delay: calc(var(--char-index) * 0.09s);
 }
 /* 2. RANDOM TITLE POSITIONS */
 /* you can swap these classes via JS or by hand */
@@ -152,7 +152,12 @@
   display: inline-block;
   margin-right: 0.02em;
   animation: typingLetter 0.05s forwards;
-  animation-delay: calc(var(--char-index) * 0.05s);
+  animation-delay: calc(var(--char-index) * 0.09s);
+}
+
+.glitch-line.animate .glitch-char span {
+  animation: typingLetter 0.05s forwards;
+  animation-delay: calc(var(--char-index) * 0.09s);
 }
 
 /* 4. Your existing keyframes */
@@ -167,12 +172,20 @@
 .glitch-char {
   display: inline-block;
   position: relative;
-  animation: glitchFlicker 1.2s infinite ease-in-out;
-  text-shadow:
-    1px 0 red,
-    -1px 0 cyan,
-    0 1px magenta;
   animation-play-state: running;
+}
+
+.glitch-char.glitch {
+  animation: moveGlitch 0.4s ease-in-out;
+}
+
+.glitch-char > span {
+  display: inline-block;
+  transition: opacity 0.2s ease;
+}
+
+.glitch-char.glitch > span {
+  animation: moveGlitch 0.4s ease-in-out;
 }
 
 /* per-letter glitch */
@@ -181,43 +194,6 @@
   /* text-shadow and animation removed for glitch-char, handled elsewhere if needed */
 }
 
-@keyframes glitchFlicker {
-  0% {
-    text-shadow: 1px 0 red, -1px 0 cyan;
-    transform: translate(0, 0);
-    opacity: 1;
-  }
-  15% {
-    text-shadow: 2px 0 magenta, -2px 0 cyan;
-    transform: translate(-1px, 0);
-    opacity: 0.95;
-  }
-  30% {
-    text-shadow: none;
-    transform: translate(1px, -1px);
-    opacity: 1;
-  }
-  45% {
-    text-shadow: -1px 0 red, 1px 0 blue;
-    transform: translate(1px, 1px);
-    opacity: 0.85;
-  }
-  60% {
-    text-shadow: 2px 0 green, -2px 0 red;
-    transform: translate(-2px, 0);
-    opacity: 1;
-  }
-  75% {
-    text-shadow: none;
-    transform: translate(0, 1px);
-    opacity: 0.95;
-  }
-  100% {
-    text-shadow: 1px 0 red, -1px 0 cyan;
-    transform: translate(0, 0);
-    opacity: 1;
-  }
-}
 
 @keyframes flipX {
   from { transform: scaleX(1); }
@@ -242,4 +218,11 @@
 @keyframes typingLetter {
   from { opacity: 0; }
   to   { opacity: 1; }
+}
+@keyframes moveGlitch {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(-2px, 1px); }
+  50%  { transform: translate(1px, -1px); }
+  75%  { transform: translate(-1px, 2px); }
+  100% { transform: translate(0, 0); }
 }
