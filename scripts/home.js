@@ -1,5 +1,78 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Prevent video from immediately restarting after ending & scroll
+  let videoJustEnded = false;
+  // Initially hide final image section
+  const finalImageSection = document.getElementById("finalImageSection");
+  if (finalImageSection) {
+    finalImageSection.style.display = "none";
+  }
+  // Fade out loading overlay when ending video ends
+  const endingVideo = document.getElementById("videoEnding");
+  const loadingOverlay = document.querySelector(".loading-overlay");
+  if (endingVideo && loadingOverlay) {
+    endingVideo.addEventListener("ended", () => {
+      loadingOverlay.style.transition = "opacity 1s ease";
+      loadingOverlay.style.opacity = "0";
+      setTimeout(() => {
+        loadingOverlay.style.display = "none";
+      }, 1000);
+      // Show the final image section and scroll to it
+      if (finalImageSection) {
+        finalImageSection.style.display = "flex";
+        finalImageSection.scrollIntoView({ behavior: "smooth" });
+      }
+      // Prevent restart-on-scroll for a short time
+      videoJustEnded = true;
+      setTimeout(() => {
+        videoJustEnded = false;
+      }, 1000); // Prevent scroll-triggered restart for 1 second
+    });
+
+    // Animate loading text based on video progress
+    const loadingText = document.querySelector(".loading-text");
+    if (loadingText) {
+      endingVideo.addEventListener("timeupdate", () => {
+        if (endingVideo.readyState >= 2) {
+          const percent = Math.floor((endingVideo.currentTime / endingVideo.duration) * 100);
+          loadingText.textContent = `Loading... ${percent}%`;
+        }
+      });
+      // No need for a separate ended event for scrollIntoView here
+    }
+  }
   console.log("✅ script.js loaded and DOMContentLoaded fired");
+
+  // Add a scroll event listener that checks if the user has scrolled back up into the video area, and if so, restarts the video from the beginning
+  window.addEventListener("scroll", () => {
+    const videoSection = document.getElementById("finalVideo");
+    const endingVideo = document.getElementById("videoEnding");
+    const loadingOverlay = document.querySelector(".loading-overlay");
+    const finalImageSection = document.getElementById("finalImageSection");
+    if (!videoSection || !endingVideo) return;
+    const rect = videoSection.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    // If top of video is back in view, restart video
+    if (rect.top < windowHeight && rect.bottom > 0) {
+      if (!videoJustEnded && (endingVideo.paused || endingVideo.ended)) {
+        // Fade out, then fade in the video section with a smoother transition
+        videoSection.style.transition = "opacity 0.8s ease";
+        videoSection.style.opacity = "0";
+        setTimeout(() => {
+          videoSection.style.opacity = "1";
+        }, 100); // slight delay to allow the fade-out to apply before fade-in starts
+        endingVideo.currentTime = 0;
+        endingVideo.play();
+        // Reset loading overlay
+        if (loadingOverlay) {
+          loadingOverlay.style.display = "block";
+          loadingOverlay.style.opacity = "1";
+        }
+        if (finalImageSection) {
+          finalImageSection.style.display = "none";
+        }
+      }
+    }
+  });
 /* ===========================================================================
      1) TYPED TEXT LINES (FIRST SCREEN)
      =========================================================================== */
@@ -8,6 +81,19 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("line2"),
     document.getElementById("line3")
   ];
+  lineEls.forEach((line, i) => {
+    const text = line.textContent;
+    line.textContent = '';
+    [...text].forEach((ch, j) => {
+      const span = document.createElement('span');
+      span.textContent = ch;
+      span.className = 'type-char';
+      span.style.opacity = '0';
+      span.style.transition = 'opacity 0.05s ease';
+      span.style.transitionDelay = `${j * 40}ms`;
+      line.appendChild(span);
+    });
+  });
   let scrollThresholds = [];
 
   function computeScrollThresholds() {
@@ -45,20 +131,39 @@ document.addEventListener("DOMContentLoaded", () => {
   for (let i = 1; i <= totalFrames; i++) {
     const img = new Image();
     const num = String(i).padStart(3, "0");
-    img.src = `frames/frame_${num}.jpg`;
+    img.src = `frames/frame_${num}.png`;
     img.onload = () => {
       loadedCount++;
       if (loadedCount === totalFrames) {
         console.log("🎞️ All frames preloaded");
+
+        const preloader = document.getElementById("preloader");
+        if (preloader) {
+          preloader.classList.add("fade-out");
+          setTimeout(() => {
+            preloader.remove();
+          }, 1000);
+        }
+
         computeScrollThresholds();
         window.addEventListener("scroll", onScrollDraw);
       }
     };
     img.onerror = () => {
-      console.warn(`⚠️ Could not load frames/frame_${num}.jpg`);
+      console.warn(`⚠️ Could not load frames/frame_${num}.png`);
       loadedCount++;
       if (loadedCount === totalFrames) {
-        computeScrollThresholds();s
+        console.log("🎞️ All frames preloaded");
+
+        const preloader = document.getElementById("preloader");
+        if (preloader) {
+          preloader.classList.add("fade-out");
+          setTimeout(() => {
+            preloader.remove();
+          }, 1000);
+        }
+
+        computeScrollThresholds();
         window.addEventListener("scroll", onScrollDraw);
       }
     };
@@ -114,6 +219,19 @@ document.addEventListener("DOMContentLoaded", () => {
     lineEls.forEach((el, i) => {
       if (progress >= scrollThresholds[i] && !el.classList.contains("visible")) {
         el.classList.add("visible");
+        const chars = el.querySelectorAll('.type-char');
+        chars.forEach((char, idx) => {
+          char.style.opacity = '1';
+        });
+        // Use a continuous glitch effect like in #stats-block
+        setTimeout(() => {
+          setInterval(() => {
+            const i = Math.floor(Math.random() * chars.length);
+            const c = chars[i];
+            c.classList.add('glitch-lite');
+            setTimeout(() => c.classList.remove('glitch-lite'), 200);
+          }, 300);
+        }, 800); // delay glitch until after all letters have faded in
       }
     });
 
@@ -133,8 +251,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (wrapper) {
         wrapper.style.position  = "fixed";
         wrapper.style.top       = "25vh";
-        wrapper.style.left      = "50%";
-        wrapper.style.transform = "translateX(-50%)";
+        wrapper.style.left      = "0";
+        wrapper.style.transform = "none";
       }
       if (textContainer) {
         textContainer.style.position  = "fixed";
@@ -157,8 +275,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const absTopW = rectW.top + window.scrollY;
         wrapper.style.position  = "absolute";
         wrapper.style.top       = `${absTopW}px`;
-        wrapper.style.left      = "50%";
-        wrapper.style.transform = "translateX(-50%)";
+        wrapper.style.left      = "0";
+        wrapper.style.transform = "none";
         wrapper.classList.add("unpinned");
       }
       if (textContainer && !textContainer.classList.contains("unpinned")) {

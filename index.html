@@ -9,6 +9,14 @@
   <link rel="stylesheet" href="/styles/home.css">
 </head>
 <body id="pageBody" style="background-color: rgb(0, 0, 0);">
+  <div id="preloader">
+    <video autoplay muted loop playsinline id="preloaderVideo">
+      <source src="videos/preloadvideo.mp4" type="video/mp4" />
+    </video>
+    <div class="preloader-overlay">
+      <div class="preloader-text">Loading... 0%</div>
+    </div>
+  </div>
   <header class="custom-header top-header" data-header="top">
     <div class="site-name">SASHA FERREIRA</div>
     <div class="menu-toggle" id="menuToggle">MENU</div>
@@ -22,7 +30,7 @@
     </nav>
   </div>
   <div class="scrub-spacer"></div>
-  <div class="canvas-wrapper">
+  <div class="canvas-wrapper" style="left: 0; transform: none;">
     <canvas id="scrollCanvas"></canvas>
   </div>
   <div class="animated-text-container">
@@ -207,17 +215,52 @@
    <script src="/scripts/core.js" defer></script>
   <!-- Home-only scripts -->
   <script src="/scripts/home.js" defer></script>
-<div id="bottomNav">
+</script>
+<!-- Top navigation before finalVideo -->
+<div id="bottomNavTop">
   <div class="nav-menu">
-    <a href="index.html"    class="active">Home</a>
+    <a href="index.html" class="active">Home</a>
     <a href="projects.html">Projects</a>
     <a href="/contact">Contact</a>
   </div>
-    <div class="nav-button nav-up" title="Back to Top">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M12 19V6M5 13l7-7 7 7" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
+  <div class="nav-button nav-up" title="Back to Top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V6M5 13l7-7 7 7" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
   </div>
+</div>
 </body>
+  <section id="finalVideo" class="final-video-section">
+    <div class="video-wrapper">
+      <video
+        id="videoEnding"
+        class="ending-video"
+        src="videos/videoending.mp4"
+        type="video/mp4"
+        autoplay
+        muted
+        playsinline
+      ></video>
+      <div class="loading-overlay">
+        <div class="loading-text">Loading... 100%</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="finalImageSection" class="final-image-section">
+    <img src="images/imageending.png" alt="Final Scene" class="final-image" />
+    <!-- Bottom navigation inside finalImageSection -->
+    <div id="bottomNavImage">
+      <div class="nav-menu">
+        <a href="index.html" class="active">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="/contact">Contact</a>
+      </div>
+      <div class="nav-button nav-up" title="Back to Video">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 19V6M5 13l7-7 7 7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </section>
 </html>
